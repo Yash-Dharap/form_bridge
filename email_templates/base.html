@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormBridge Submission Notification</title>
+    <style type="text/css">
+        /* Reset and normalize */
+        body, html, table, tr, td, div, p, a {
+            margin: 0;
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f4f8 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1a202c;
+        }
+
+        /* Main container table */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(109, 40, 217, 0.1);
+        }
+
+        /* Header with gradient background and logo */
+        .email-header {
+            background: linear-gradient(135deg, #6D28D9 0%, #9333EA 50%, #EC4899 100%);
+            padding: 45px 20px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .email-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            max-width: 70px;
+            height: auto;
+            display: inline-block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.8px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-subtitle {
+            font-size: 15px;
+            opacity: 0.98;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+
+        /* Form badge - improved */
+        .form-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Content section */
+        .email-content {
+            padding: 45px 35px;
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafc 100%);
+        }
+
+        /* Section headers - improved */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 3px solid #6D28D9;
+            letter-spacing: -0.3px;
+        }
+
+        /* Submission summary section - enhanced */
+        .summary-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+            border-left: 5px solid #6D28D9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 8px rgba(109, 40, 217, 0.05);
+        }
+
+        .summary-row {
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-label {
+            font-weight: 700;
+            color: #6D28D9;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .summary-value {
+            color: #1a202c;
+            font-size: 15px;
+            word-wrap: break-word;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        /* Meta information (smaller) - improved */
+        .meta-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            border-left: 3px solid #9333EA;
+            box-shadow: 0 2px 8px rgba(147, 51, 234, 0.05);
+        }
+
+        .meta-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #9333EA;
+            margin-bottom: 14px;
+            letter-spacing: 0.7px;
+        }
+
+        .meta-grid {
+            display: block;
+        }
+
+        .meta-item {
+            margin-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .meta-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .meta-label {
+            color: #6D28D9;
+            font-weight: 700;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .meta-value {
+            color: #475569;
+            word-break: break-all;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            background-color: rgba(109, 40, 217, 0.05);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* CTA Button - modern gradient */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 28px;
+            margin-top: 32px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #6D28D9 0%, #9333EA 50%, #EC4899 100%);
+            background-size: 200% 200%;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
+            letter-spacing: 0.3px;
+            mso-padding-alt: 14px 36px;
+            mso-border-radius: 8px;
+        }
+
+        .cta-button:hover {
+            background-position: 100% 0;
+            box-shadow: 0 6px 24px rgba(109, 40, 217, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Footer section - improved */
+        .email-footer {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+            padding: 28px 35px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .footer-text {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+        }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 600px) {
+            .email-container {
+                border-radius: 0;
+            }
+
+            .email-header {
+                padding: 30px 16px;
+            }
+
+            .header-title {
+                font-size: 24px;
+            }
+
+            .email-content {
+                padding: 24px 16px;
+            }
+
+            .email-footer {
+                padding: 16px;
+            }
+
+            .summary-block {
+                padding: 12px;
+            }
+
+            .meta-section {
+                padding: 12px;
+            }
+
+            .cta-button {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 20px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0f172a;
+            }
+
+            .email-container {
+                background-color: #1a202c;
+            }
+
+            .email-content {
+                color: #e2e8f0;
+            }
+
+            .section-title {
+                color: #f1f5f9;
+                border-bottom-color: #334155;
+            }
+
+            .summary-block {
+                background-color: #1e293b;
+                color: #cbd5e1;
+            }
+
+            .summary-label {
+                color: #94a3b8;
+            }
+
+            .summary-value {
+                color: #e2e8f0;
+            }
+
+            .meta-section {
+                background-color: #1e293b;
+            }
+
+            .meta-title {
+                color: #78909c;
+            }
+
+            .meta-label {
+                color: #90a4ae;
+            }
+
+            .meta-value {
+                color: #b0bec5;
+            }
+
+            .email-footer {
+                background-color: #1e293b;
+                border-top-color: #334155;
+                color: #90a4ae;
+            }
+
+            .footer-disclaimer {
+                color: #64748b;
+            }
+        }
+
+        /* Outlook-specific fixes */
+        .mso-body-section {
+            mso-padding-alt: 0 0 0 0;
+        }
+
+        /* Table alignment for Outlook */
+        table[class="email-container"] {
+            width: 100% !important;
+            max-width: 600px !important;
+        }
+
+        /* Force Outlook to wrap */
+        @media only screen and (max-width: 480px) {
+            body, table, td, div, p, a {
+                -webkit-text-size-adjust: 100% !important;
+                -ms-text-size-adjust: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="0" width="100%" style="width: 100%; background-color: #f8f9fa; padding: 20px 0;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <!-- Main container -->
+                <table class="email-container" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px;">
+                    
+                    <!-- Header with gradient and logo -->
+                    <tr>
+                        <td class="email-header" style="background: linear-gradient(135deg, #6D28D9 0%, #EC4899 100%); padding: 40px 20px; text-align: center; color: #ffffff;">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <div class="logo-container" style="margin-bottom: 20px;">
+                                            <img src="{{brand_logo_url}}" alt="{{brand_name}} Logo" width="60" height="60" style="max-width: 60px; height: auto; display: block;">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <div class="header-title" style="font-size: 28px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; color: #ffffff;">New {{brand_name}} Submission</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <div class="header-subtitle" style="font-size: 14px; opacity: 0.95; font-weight: 400; color: #ffffff;">You have a new contact form submission</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <div class="form-badge" style="display: inline-block; background-color: rgba(255, 255, 255, 0.25); color: #ffffff; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 12px;">Form: {{form_id}}</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Content section -->
+                    <tr>
+                        <td class="email-content" style="padding: 40px 30px;">
+                            
+                            <!-- Submission Summary -->
+                            <div style="margin-bottom: 24px;">
+                                <div class="section-title" style="font-size: 16px; font-weight: 600; color: #1a202c; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0;">Submission Details</div>
+                                
+                                <div class="summary-block" style="background-color: #f8fafc; border-left: 4px solid #6D28D9; padding: 16px; border-radius: 4px;">
+                                    
+                                    <div class="summary-row" style="margin-bottom: 12px;">
+                                        <span class="summary-label" style="font-weight: 600; color: #4a5568; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Name</span>
+                                        <span class="summary-value" style="color: #1a202c; font-size: 14px;">{{name}}</span>
+                                    </div>
+
+                                    <div class="summary-row" style="margin-bottom: 12px;">
+                                        <span class="summary-label" style="font-weight: 600; color: #4a5568; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Email</span>
+                                        <span class="summary-value" style="color: #1a202c; font-size: 14px;">
+                                            <a href="mailto:{{email}}" style="color: #6D28D9; text-decoration: none;">{{email}}</a>
+                                        </span>
+                                    </div>
+
+                                    <div class="summary-row" style="margin-bottom: 0;">
+                                        <span class="summary-label" style="font-weight: 600; color: #4a5568; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Message</span>
+                                        <span class="summary-value" style="color: #1a202c; font-size: 14px;">{{excerpt}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Meta Information -->
+                            <div class="meta-section" style="background-color: #f1f5f9; padding: 16px; border-radius: 4px; margin-bottom: 24px;">
+                                <div class="meta-title" style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #64748b; margin-bottom: 12px; letter-spacing: 0.5px;">Technical Details</div>
+                                
+                                <table cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
+                                    <tr>
+                                        <td style="margin-bottom: 8px; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">Form ID:</span>
+                                            <span class="meta-value" style="color: #475569; font-family: 'Monaco', 'Courier New', monospace;">{{form_id}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-bottom: 8px; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">Submission ID:</span>
+                                            <span class="meta-value" style="color: #475569; font-family: 'Monaco', 'Courier New', monospace;">{{id}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-bottom: 8px; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">Received:</span>
+                                            <span class="meta-value" style="color: #475569;">{{ts}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-bottom: 8px; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">Page:</span>
+                                            <span class="meta-value" style="color: #475569;">{{page}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-bottom: 8px; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">IP Address:</span>
+                                            <span class="meta-value" style="color: #475569;">{{ip}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin-bottom: 0; font-size: 12px; vertical-align: top;">
+                                            <span class="meta-label" style="color: #64748b; font-weight: 500;">User Agent:</span>
+                                            <span class="meta-value" style="color: #475569; word-break: break-all;">{{ua}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- CTA Button -->
+                            <div class="cta-section" style="text-align: center; margin-bottom: 24px;">
+                                <a href="{{dashboard_url}}" class="cta-button" style="display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, #6D28D9 0%, #EC4899 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; border: none; cursor: pointer;">
+                                    📊 Open Dashboard
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td class="email-footer" style="background-color: #f8fafc; padding: 24px 30px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 12px; color: #64748b;">
+                            <div class="footer-text" style="margin-bottom: 8px;">
+                                <strong>{{brand_name}}</strong> — Serverless Forms for Modern Teams
+                            </div>
+                            <div class="footer-disclaimer" style="font-size: 11px; color: #94a3b8; margin-top: 12px; line-height: 1.5;">
+                                This is an automated notification from your {{brand_name}} account. Please do not reply to this email. 
+                                For support, visit our <a href="{{dashboard_url}}" style="color: #6D28D9; text-decoration: none;">dashboard</a> or documentation.
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
