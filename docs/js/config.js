@@ -6,7 +6,7 @@ window.CONFIG = {
   PAGES_BASE: "/formbridge",
   
   // API Configuration
-  API_URL: "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod",
+  //API_URL: "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod",
   API_KEY: "", // Leave empty - API doesn't require key for form submission
   FORM_ID: "contact-us",
   
