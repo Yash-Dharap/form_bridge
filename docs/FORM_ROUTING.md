@@ -99,8 +99,8 @@ Global Environment Defaults
 ```bash
 SES_RECIPIENTS="admin@formbridge.example.com"
 BRAND_PRIMARY_HEX="#6D28D9"
-BRAND_LOGO_URL="https://omdeshpande09012005.github.io/website/assets/logo.svg"
-DASHBOARD_URL="https://omdeshpande09012005.github.io/docs/"
+BRAND_LOGO_URL="https://YOUR_USERNAME.github.io/website/assets/logo.svg"
+DASHBOARD_URL="https://YOUR_USERNAME.github.io/docs/"
 ```
 
 ---

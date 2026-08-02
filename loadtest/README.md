@@ -77,7 +77,7 @@ HMAC_SECRET=
 **For Production (PROD):**
 
 ```env
-BASE_URL=https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod
+BASE_URL=https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod
 API_KEY=your-api-key-here
 FORM_ID=my-portfolio
 HMAC_ENABLED=true

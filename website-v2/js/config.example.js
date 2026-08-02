@@ -6,7 +6,7 @@ window.CONFIG = {
   PAGES_BASE: "/formbridge",
   
   // API Configuration
-  API_URL: "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod",
+  API_URL: "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod",
   API_KEY: "your-api-key-here", // Demo key (rotate in production)
   FORM_ID: "contact-us",
   
@@ -15,7 +15,7 @@ window.CONFIG = {
   HMAC_SECRET: "",
   
   // Dashboard link
-  DASHBOARD_URL: "https://omdeshpande09012005.github.io/formbridge/dashboard",
+  DASHBOARD_URL: "https://YOUR_USERNAME.github.io/formbridge/dashboard",
   
   // Feature flags
   ENABLE_ANALYTICS: true

@@ -48,7 +48,7 @@ const CONFIG = {
     API_URL: 'http://127.0.0.1:3000',
     
     // Production (AWS):
-    // API_URL: 'https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod',
+    // API_URL: 'https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod',
     
     API_KEY: '',  // Optional: leave empty for dev, add for production
     DEFAULT_FORM_ID: 'portfolio-contact'

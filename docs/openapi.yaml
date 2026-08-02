@@ -15,10 +15,10 @@ info:
   version: 1.0.0
   contact:
     name: FormBridge Support
-    url: https://github.com/omdeshpande09012005/formbridge
+    url: https://github.com/YOUR_USERNAME/formbridge
   license:
     name: MIT
-    url: https://github.com/omdeshpande09012005/formbridge/blob/main/LICENSE
+    url: https://github.com/YOUR_USERNAME/formbridge/blob/main/LICENSE
 
 servers:
   - url: http://127.0.0.1:3000
@@ -30,7 +30,7 @@ servers:
     description: AWS API Gateway (Production)
     variables:
       apiId:
-        default: 12mse3zde5
+        default: YOUR_API_ID
         description: API Gateway ID
       region:
         default: ap-south-1
@@ -84,7 +84,7 @@ components:
           type: string
           format: uri
           description: URL of the page where the form was submitted
-          example: https://omdeshpande09012005.github.io/
+          example: https://YOUR_USERNAME.github.io/
 
     SubmitResponse:
       type: object
@@ -194,7 +194,7 @@ paths:
                   name: Bob Johnson
                   email: bob@company.com
                   message: I'd like to hire you for a project.
-                  page: https://omdeshpande09012005.github.io/#contact
+                  page: https://YOUR_USERNAME.github.io/#contact
               minimal:
                 summary: Minimal submission (message only)
                 value:

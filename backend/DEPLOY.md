@@ -80,7 +80,7 @@ sam deploy --guided
    - Enter: Your email (e.g., `you@gmail.com`)
 
 6. **Parameter: FrontendOrigin** (Your portfolio URL)
-   - Enter: `https://omdeshpande09012005.github.io`
+   - Enter: `https://YOUR_USERNAME.github.io`
 
 7. **Confirm changes before deploy** (SAM will show summary)
    - Type: `y` and press Enter
@@ -209,7 +209,7 @@ curl -X POST https://ABC123.execute-api.us-east-1.amazonaws.com/Prod/submit \
     "name": "John Doe",
     "email": "john@example.com",
     "message": "Test message",
-    "page": "https://omdeshpande09012005.github.io"
+    "page": "https://YOUR_USERNAME.github.io"
   }'
 ```
 

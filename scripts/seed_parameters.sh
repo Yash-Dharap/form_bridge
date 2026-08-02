@@ -160,7 +160,7 @@ put_parameter \
 # Brand Logo URL
 put_parameter \
     "/formbridge/${STAGE}/brand/logo_url" \
-    "https://omdeshpande09012005.github.io/website/assets/logo.svg" \
+    "https://YOUR_USERNAME.github.io/website/assets/logo.svg" \
     "FormBridge logo URL" \
     "String"
 
@@ -174,7 +174,7 @@ put_parameter \
 # Dashboard URL
 put_parameter \
     "/formbridge/${STAGE}/dashboard/url" \
-    "https://omdeshpande09012005.github.io/docs/" \
+    "https://YOUR_USERNAME.github.io/docs/" \
     "FormBridge dashboard URL" \
     "String"
 

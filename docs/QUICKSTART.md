@@ -10,7 +10,7 @@ cp js/config.example.js js/config.js
 Then edit `js/config.js`:
 ```javascript
 const CONFIG = {
-  API_URL: 'https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod',
+  API_URL: 'https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod',
   API_KEY: 'your-demo-key-here',
   FORM_ID: 'contact-us',
 };
@@ -71,7 +71,7 @@ git commit -m "feat(website-v2): complete SaaS marketing site"
 git push origin main
 
 # 3. Verify at:
-# https://omdeshpande09012005.github.io/formbridge/website-v2/
+# https://YOUR_USERNAME.github.io/formbridge/website-v2/
 ```
 
 ---

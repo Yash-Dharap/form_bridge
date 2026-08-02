@@ -15,7 +15,7 @@
 ```bash
 cd w:\PROJECTS\formbridge
 k6 run loadtest/submit_smoke.js `
-  -e BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod" `
+  -e BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod" `
   -e API_KEY="your-api-key-here" `
   -e FORM_ID="contact-us"
 ```

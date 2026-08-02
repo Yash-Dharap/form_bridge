@@ -22,9 +22,9 @@ LAMBDA_NAME="contactFormProcessor"                     # Lambda function
 ROLE_NAME="formbridge-deploy"                          # IAM role name
 API_ID="YOUR_API_ID_HERE"                              # API Gateway API ID
 STAGE_NAME="Prod"                                      # API Gateway stage
-FRONTEND_ORIGIN="https://omdeshpande09012005.github.io" # CORS origin
-SES_SENDER="omdeshpande123456789@gmail.com"            # Verified SES sender
-SES_RECIPIENTS="omdeshpande123456789@gmail.com,omdeshpande0901@gmail.com,sahil.bobhate@mitwpu.edu.in,yash.dharap@mitwpu.edu.in,om.deshpande@mitwpu.edu.in"  # Recipients
+FRONTEND_ORIGIN="https://YOUR_USERNAME.github.io" # CORS origin
+SES_SENDER="you@example.com"            # Verified SES sender
+SES_RECIPIENTS="you@example.com,you@example.com,you@example.com,you@example.com,you@example.com"  # Recipients
 
 # ============================================================================
 # DERIVED VALUES (Do not modify)
@@ -380,7 +380,7 @@ TEST_PAYLOAD='{
   "name": "Test User",
   "email": "test@example.com",
   "message": "This is a test submission from AWS CLI",
-  "page": "https://omdeshpande09012005.github.io/contact"
+  "page": "https://YOUR_USERNAME.github.io/contact"
 }'
 
 echo "✓ Test Payload:"
@@ -476,12 +476,12 @@ aws ses get-account-sending-enabled \
 echo ""
 echo "⚠ ACTION REQUIRED:"
 echo "  1. If not all identities are verified, go to AWS SES console"
-echo "  2. Verify: omdeshpande123456789@gmail.com (already verified)"
-echo "  3. Verify: omdeshpande0901@gmail.com (already verified)"
-echo "  4. Verify: aayush.das@mitwpu.edu.in (currently UNVERIFIED)"
-echo "  5. Verify: sahil.bobhate@mitwpu.edu.in (already verified)"
-echo "  6. Verify: yash.dharap@mitwpu.edu.in (already verified)"
-echo "  7. Verify: om.deshpande@mitwpu.edu.in (already verified)"
+echo "  2. Verify: you@example.com (already verified)"
+echo "  3. Verify: you@example.com (already verified)"
+echo "  4. Verify: you@example.com (currently UNVERIFIED)"
+echo "  5. Verify: you@example.com (already verified)"
+echo "  6. Verify: you@example.com (already verified)"
+echo "  7. Verify: you@example.com (already verified)"
 echo ""
 echo "  To verify email via CLI:"
 echo "    aws ses verify-email-identity \\"

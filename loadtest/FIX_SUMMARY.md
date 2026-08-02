@@ -89,7 +89,7 @@ The API Gateway was rejecting all requests because it didn't recognize the `Bear
 ```powershell
 cd w:\PROJECTS\formbridge
 k6 run loadtest/submit_smoke.js `
-  -e BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod" `
+  -e BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod" `
   -e API_KEY="your-api-key" `
   -e FORM_ID="contact-us"
 ```
@@ -121,7 +121,7 @@ cd w:\PROJECTS\formbridge
 ```powershell
 # Replace YOUR_API_KEY with your actual key
 k6 run loadtest/submit_smoke.js `
-  -e BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod" `
+  -e BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod" `
   -e API_KEY="YOUR_API_KEY" `
   -e FORM_ID="contact-us"
 ```
@@ -241,7 +241,7 @@ k6 run loadtest/submit_smoke.js `
 
 ## 📞 REFERENCE
 
-**API Endpoint**: `https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit`
+**API Endpoint**: `https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit`
 **Expected Header**: `X-Api-Key: YOUR_KEY`
 **Test Script**: `loadtest/submit_smoke.js`
 **Results Location**: `loadtest/reports/results.json`

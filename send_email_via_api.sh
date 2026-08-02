@@ -6,8 +6,8 @@
 API_ENDPOINT="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit"
 FORM_ID="email-template-test"
 SENDER_NAME="Om Deshpande"
-SENDER_EMAIL="om.deshpande@mitwpu.edu.in"
-RECIPIENT_EMAIL="om.deshpande@mitwpu.edu.in"
+SENDER_EMAIL="you@example.com"
+RECIPIENT_EMAIL="you@example.com"
 SUBJECT="FormBridge Email Template Test"
 MESSAGE="This is a test email sent using FormBridge with the base.html template"
 

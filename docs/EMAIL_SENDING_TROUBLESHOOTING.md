@@ -7,12 +7,12 @@
 
 ## Environment Variables Verified ✅
 ```
-SES_SENDER: omdeshpande123456789@gmail.com ✅
-SES_RECIPIENTS: om.deshpande@mitwpu.edu.in ✅
+SES_SENDER: you@example.com ✅
+SES_RECIPIENTS: you@example.com ✅
 DDB_TABLE: contact-form-submissions-prod ✅
 FORM_CONFIG_TABLE: formbridge-config-prod ✅
 STAGE: prod ✅
-FRONTEND_ORIGIN: https://omdeshpande09012005.github.io/formbridge/ ✅
+FRONTEND_ORIGIN: https://YOUR_USERNAME.github.io/formbridge/ ✅
 ```
 
 ## Hypothesis
@@ -56,7 +56,7 @@ If the parameter doesn't exist, the Lambda might not be falling back correctly.
 ```powershell
 aws ssm put-parameter `
     --name "/formbridge/prod/ses/recipients" `
-    --value "om.deshpande@mitwpu.edu.in" `
+    --value "you@example.com" `
     --type "String" `
     --overwrite `
     --region ap-south-1 `
@@ -117,7 +117,7 @@ else:
 
 **The condition is:** `if configured_recipients and SES_SENDER:`
 
-- ✅ `SES_SENDER` is set: "omdeshpande123456789@gmail.com"
+- ✅ `SES_SENDER` is set: "you@example.com"
 - ❓ `configured_recipients` = ?
 
 If `configured_recipients` is an empty list `[]`, the email won't be sent!
@@ -133,7 +133,7 @@ aws ssm get-parameter --name "/formbridge/prod/ses/recipients" --region ap-south
 ```powershell
 aws ssm put-parameter `
     --name "/formbridge/prod/ses/recipients" `
-    --value "om.deshpande@mitwpu.edu.in" `
+    --value "you@example.com" `
     --type "String" `
     --overwrite `
     --region ap-south-1 `
@@ -154,7 +154,7 @@ aws logs tail /aws/lambda/contactFormProcessor --follow --region ap-south-1 --pr
 Add this SSM parameter:
 ```bash
 Name: /formbridge/prod/ses/recipients
-Value: om.deshpande@mitwpu.edu.in
+Value: you@example.com
 Type: String
 ```
 
@@ -167,5 +167,5 @@ sam deploy --stack-name formbridge-stack --capabilities CAPABILITY_IAM --no-conf
 
 Test again with:
 ```powershell
-.\send_email_via_api.ps1 -Sender "omdeshpande123456789@gmail.com" -Recipient "om.deshpande@mitwpu.edu.in"
+.\send_email_via_api.ps1 -Sender "you@example.com" -Recipient "you@example.com"
 ```

@@ -22,10 +22,10 @@ bash scripts/diagnose-api-403.sh --fix-permissive
 aws apigateway get-rest-apis --region ap-south-1
 
 # Get stage
-aws apigateway get-stage --rest-api-id 12mse3zde5 --stage-name Prod --region ap-south-1
+aws apigateway get-stage --rest-api-id YOUR_API_ID --stage-name Prod --region ap-south-1
 
 # Get resources
-aws apigateway get-resources --rest-api-id 12mse3zde5 --region ap-south-1
+aws apigateway get-resources --rest-api-id YOUR_API_ID --region ap-south-1
 ```
 
 ### Check API Key Setup
@@ -46,12 +46,12 @@ aws apigateway get-api-key --api-key <KEY_ID> --include-value --region ap-south-
 ### Check Method Configuration
 ```bash
 # Get /submit resource ID
-RESOURCE_ID=$(aws apigateway get-resources --rest-api-id 12mse3zde5 --region ap-south-1 \
+RESOURCE_ID=$(aws apigateway get-resources --rest-api-id YOUR_API_ID --region ap-south-1 \
   | jq -r '.items[] | select(.path == "/submit") | .id')
 
 # Get POST method
 aws apigateway get-method \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --resource-id $RESOURCE_ID \
   --http-method POST \
   --region ap-south-1
@@ -59,11 +59,11 @@ aws apigateway get-method \
 
 ### Enable API Key Requirement
 ```bash
-RESOURCE_ID=$(aws apigateway get-resources --rest-api-id 12mse3zde5 --region ap-south-1 \
+RESOURCE_ID=$(aws apigateway get-resources --rest-api-id YOUR_API_ID --region ap-south-1 \
   | jq -r '.items[] | select(.path == "/submit") | .id')
 
 aws apigateway put-method \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --resource-id $RESOURCE_ID \
   --http-method POST \
   --authorization-type NONE \
@@ -73,7 +73,7 @@ aws apigateway put-method \
 
 ### Check Resource Policy
 ```bash
-aws apigateway get-resource-policy --rest-api-id 12mse3zde5 --region ap-south-1
+aws apigateway get-resource-policy --rest-api-id YOUR_API_ID --region ap-south-1
 ```
 
 ### Apply Permissive Policy (Testing Only)
@@ -84,23 +84,23 @@ POLICY='{
     "Effect": "Allow",
     "Principal": "*",
     "Action": "execute-api:Invoke",
-    "Resource": "arn:aws:execute-api:ap-south-1:*:12mse3zde5/*"
+    "Resource": "arn:aws:execute-api:ap-south-1:*:YOUR_API_ID/*"
   }]
 }'
 
 aws apigateway put-resource-policy \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --policy "$POLICY" \
   --region ap-south-1
 ```
 
 ### Test Invoke (Bypass Network Policies)
 ```bash
-RESOURCE_ID=$(aws apigateway get-resources --rest-api-id 12mse3zde5 --region ap-south-1 \
+RESOURCE_ID=$(aws apigateway get-resources --rest-api-id YOUR_API_ID --region ap-south-1 \
   | jq -r '.items[] | select(.path == "/submit") | .id')
 
 aws apigateway test-invoke-method \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --resource-id $RESOURCE_ID \
   --http-method POST \
   --body '{"form_id":"test","message":"hello"}' \
@@ -110,7 +110,7 @@ aws apigateway test-invoke-method \
 ### Deploy API
 ```bash
 aws apigateway create-deployment \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --region ap-south-1
 ```
@@ -118,7 +118,7 @@ aws apigateway create-deployment \
 ### Enable Execution Logging
 ```bash
 aws apigateway update-stage \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --patch-operations \
     op=replace,path=/*/*/logging/loglevel,value=INFO \
@@ -132,14 +132,14 @@ aws apigateway update-stage \
 
 ### Without API Key (Should be 403 if key required)
 ```bash
-curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -i -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -d '{"form_id":"test","message":"hello"}'
 ```
 
 ### With API Key (Should be 200)
 ```bash
-curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -i -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: YOUR_API_KEY" \
   -d '{"form_id":"test","message":"hello"}'
@@ -151,13 +151,13 @@ curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/su
 
 ### View Logs in Real-Time
 ```bash
-aws logs tail /aws/apigateway/12mse3zde5/Prod --follow --region ap-south-1
+aws logs tail /aws/apigateway/YOUR_API_ID/Prod --follow --region ap-south-1
 ```
 
 ### Search for 403 Errors
 ```bash
 aws logs start-query \
-  --log-group-name /aws/apigateway/12mse3zde5/Prod \
+  --log-group-name /aws/apigateway/YOUR_API_ID/Prod \
   --start-time $(($(date +%s) - 3600)) \
   --end-time $(date +%s) \
   --query-string 'fields @timestamp, @message | filter @message like /403|Forbidden|Access denied/ | sort @timestamp desc' \
@@ -191,7 +191,7 @@ $body = @{
     message = "hello"
 } | ConvertTo-Json
 
-Invoke-WebRequest -Uri "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" `
+Invoke-WebRequest -Uri "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" `
   -Method POST `
   -Headers $headers `
   -Body $body
@@ -234,7 +234,7 @@ Once 403 is fixed:
 
 ```bash
 # Export configuration
-export BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod"
+export BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod"
 export FORM_ID="my-portfolio"
 export HMAC_ENABLED="false"
 
@@ -266,7 +266,7 @@ k6 run loadtest/submit_smoke.js
 2. ✓ Review findings and errors
 3. ✓ Apply fixes if needed: `bash scripts/diagnose-api-403.sh --fix-permissive`
 4. ✓ Test with curl commands from output
-5. ✓ Monitor CloudWatch: `aws logs tail /aws/apigateway/12mse3zde5/Prod --follow`
+5. ✓ Monitor CloudWatch: `aws logs tail /aws/apigateway/YOUR_API_ID/Prod --follow`
 6. ✓ Run k6 tests: `k6 run loadtest/submit_smoke.js`
 
 ---

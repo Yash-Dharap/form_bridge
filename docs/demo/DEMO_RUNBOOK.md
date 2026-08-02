@@ -262,7 +262,7 @@ Open your email (Gmail, etc.)
 **[Browser: Production Dashboard tab]**
 
 Navigate to your production dashboard URL  
-(e.g., `https://omdeshpande09012005.github.io/dashboard/`)
+(e.g., `https://YOUR_USERNAME.github.io/dashboard/`)
 
 **[Visual]:**
 - KPI tiles: "Total submissions", "Today", "7-day breakdown"
@@ -281,7 +281,7 @@ Navigate to your production dashboard URL
 2. Or use cURL:
 
 ```bash
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/export \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/export \
   -H "X-Api-Key: your-api-key" \
   -d '{"form_id":"my-portfolio","days":7}' \
   -o submissions.csv
@@ -307,7 +307,7 @@ curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/export
 **[Postman or cURL]**
 
 ```bash
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "Content-Type: application/json" \
   -d '{
     "form_id": "my-portfolio",
@@ -350,7 +350,7 @@ Status: 200 OK
 
 **[Browser: Swagger/OpenAPI tab]**
 
-Navigate to `https://omdeshpande09012005.github.io/swagger/` (or local deployment)
+Navigate to `https://YOUR_USERNAME.github.io/swagger/` (or local deployment)
 
 **[Visual]:**
 - Shows `/submit`, `/analytics`, `/export` endpoints
@@ -372,7 +372,7 @@ Navigate to `https://omdeshpande09012005.github.io/swagger/` (or local deploymen
 **[If HMAC_ENABLED=true in Lambda]:**
 
 ```bash
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "X-Api-Key: your-key" \
   -H "X-Timestamp: 1234567890" \
   -H "X-Signature: invalid-signature" \
@@ -398,7 +398,7 @@ Status: 401 Unauthorized
 
 ```bash
 for i in {1..15}; do
-  curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+  curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
     -H "X-Api-Key: your-key" \
     -d '{"form_id":"test","message":"'$i'"}' &
 done
@@ -469,18 +469,18 @@ curl -X POST http://127.0.0.1:3000/submit \
 
 # Prod test (use Postman)
 # Or:
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "X-Api-Key: <your-key>" \
   -d '{"form_id":"my-portfolio","message":"demo"}'
 
 # CSV export
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/export \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/export \
   -H "X-Api-Key: <your-key>" \
   -d '{"form_id":"my-portfolio","days":7}' \
   -o submissions.csv
 
 # No API key (expect 403)
-curl https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit
+curl https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit
 ```
 
 ---

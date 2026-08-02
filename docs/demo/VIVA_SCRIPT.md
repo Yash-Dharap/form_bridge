@@ -87,7 +87,7 @@
 > Every request must include `X-Api-Key` header. API Gateway validates it. I've created a usage plan that rate-limits clients—free tier allows 10k requests/day. This prevents spam and DDoS.
 >
 > **Layer 2 – CORS:**
-> I've locked CORS to the portfolio domain. Only requests from `https://omdeshpande09012005.github.io` are accepted; browsers reject others.
+> I've locked CORS to the portfolio domain. Only requests from `https://YOUR_USERNAME.github.io` are accepted; browsers reject others.
 >
 > **Layer 3 – HMAC-SHA256 (Optional):**
 > For extra security, clients can sign requests with a shared secret using HMAC. Lambda verifies the signature and timestamp (5-minute window to prevent replays). Disabled by default but available if you need it.
@@ -224,7 +224,7 @@ make sam-api           # Starts local Lambda API on port 3000
 > "The dashboard shows real-time metrics. Let me pull it up."
 
 **Open browser** → Production dashboard URL  
-(e.g., `https://omdeshpande09012005.github.io/dashboard/` with production config)
+(e.g., `https://YOUR_USERNAME.github.io/dashboard/` with production config)
 
 **[Show or narrate]:**
 - "KPI tiles: total submissions, today's count, last 7 days"
@@ -246,7 +246,7 @@ make sam-api           # Starts local Lambda API on port 3000
 **Test 1: No API Key**
 
 ```bash
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "Content-Type: application/json" \
   -d '{"form_id":"test","message":"hi"}'
 ```

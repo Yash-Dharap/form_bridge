@@ -261,10 +261,10 @@ serverless contact form API built on AWS Lambda, DynamoDB, and SES.
 
 📧 CONTACT & LINKS
 
-  GitHub: https://github.com/omdeshpande09012005/formbridge
-  Dashboard: https://omdeshpande09012005.github.io/dashboard/
-  OpenAPI UI: https://omdeshpande09012005.github.io/swagger/
-  Portfolio: https://omdeshpande09012005.github.io
+  GitHub: https://github.com/YOUR_USERNAME/formbridge
+  Dashboard: https://YOUR_USERNAME.github.io/dashboard/
+  OpenAPI UI: https://YOUR_USERNAME.github.io/swagger/
+  Portfolio: https://YOUR_USERNAME.github.io
 
 ═══════════════════════════════════════════════════════════════════════════════
 

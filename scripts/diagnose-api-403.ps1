@@ -1,10 +1,10 @@
 # API Gateway 403 Diagnostic & Fix Script (PowerShell Wrapper)
 # For Windows users - calls the bash script or runs diagnostics natively
-# Usage: .\diagnose-api-403.ps1 [-Region ap-south-1] [-ApiId 12mse3zde5] [-StageName Prod] [-FixPermissive]
+# Usage: .\diagnose-api-403.ps1 [-Region ap-south-1] [-ApiId YOUR_API_ID] [-StageName Prod] [-FixPermissive]
 
 param(
     [string]$Region = "ap-south-1",
-    [string]$ApiId = "12mse3zde5",
+    [string]$ApiId = "YOUR_API_ID",
     [string]$StageName = "Prod",
     [string]$ApiKeyId = "",
     [string]$UsagePlanName = "",

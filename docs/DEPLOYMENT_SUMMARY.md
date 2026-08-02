@@ -98,7 +98,7 @@ Performance optimizations:
 
 ## 🌐 GITHUB PAGES DEPLOYMENT
 
-**Live URL**: https://omdeshpande09012005.github.io/formbridge/website-v2/
+**Live URL**: https://YOUR_USERNAME.github.io/formbridge/website-v2/
 
 **Deployment Steps**:
 1. Commit changes: `git add . && git commit -m "feat(website-v2): complete SaaS marketing site"`
@@ -145,7 +145,7 @@ Before deploying, verify:
 - 404 page (404.html)
 
 ✅ **Contact form wired to live API**
-- Endpoint: https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit
+- Endpoint: https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit
 - Supports HMAC signatures
 - Toast notifications for UX
 - Dashboard link integration
@@ -178,7 +178,7 @@ Before deploying, verify:
 2. **Update config**: Create `js/config.js` with real API credentials
 3. **Run Lighthouse**: Check performance scores
 4. **Deploy to GitHub**: Push to main branch
-5. **Verify live**: Check https://omdeshpande09012005.github.io/formbridge/website-v2/
+5. **Verify live**: Check https://YOUR_USERNAME.github.io/formbridge/website-v2/
 
 ## 📞 SUPPORT
 

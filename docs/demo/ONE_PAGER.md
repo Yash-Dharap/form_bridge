@@ -106,12 +106,12 @@ make local-test        # Submits test form → DynamoDB → Email
 ### Production (AWS)
 ```bash
 # Submit form
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "X-Api-Key: your-key" \
   -d '{"form_id":"contact","message":"Hi!"}'
 
 # Export CSV
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/export \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/export \
   -H "X-Api-Key: your-key" \
   -d '{"form_id":"contact","days":7}' \
   -o submissions.csv
@@ -161,7 +161,7 @@ curl -X POST https://<endpoint>/submit \
 ```
 
 ### 4. View Dashboard
-Open: `https://omdeshpande09012005.github.io/dashboard/`
+Open: `https://YOUR_USERNAME.github.io/dashboard/`
 
 ---
 
@@ -224,7 +224,7 @@ Open: `https://omdeshpande09012005.github.io/dashboard/`
 | **Viva Script** | `/docs/demo/VIVA_SCRIPT.md` |
 | **FAQ** | `/docs/demo/FAQ.md` |
 | **GitHub** | https://github.com/omdeshpande09012005/my-portfolio-formbridge |
-| **Dashboard** | https://omdeshpande09012005.github.io/dashboard/ |
+| **Dashboard** | https://YOUR_USERNAME.github.io/dashboard/ |
 | **AWS Region** | ap-south-1 (Mumbai) |
 
 ---

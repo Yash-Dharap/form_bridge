@@ -10,7 +10,7 @@
 ### For Deployment
 → **Read**: `DEPLOYMENT_SUMMARY.md` (5 minutes)
 → **Follow**: GitHub Pages deployment steps
-→ **Verify**: Site live at https://omdeshpande09012005.github.io/formbridge/website-v2/
+→ **Verify**: Site live at https://YOUR_USERNAME.github.io/formbridge/website-v2/
 
 ### For Technical Details
 → **Read**: `README.md` (10 minutes)
@@ -100,7 +100,7 @@ node server.js
 git add .
 git commit -m "feat(website-v2): complete SaaS marketing site"
 git push origin main
-# Site live at: https://omdeshpande09012005.github.io/formbridge/website-v2/
+# Site live at: https://YOUR_USERNAME.github.io/formbridge/website-v2/
 ```
 
 ---

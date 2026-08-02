@@ -64,7 +64,7 @@ k6 run loadtest/submit_smoke.js \
 k6 run loadtest/submit_smoke.js \
   --vus 2 \
   --duration 1m \
-  -e BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod" \
+  -e BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod" \
   -e API_KEY="your-production-api-key" \
   -e FORM_ID="contact-us" \
   -e HMAC_ENABLED="true" \
@@ -97,7 +97,7 @@ If your production API is live, run:
 
 ```bash
 k6 run loadtest/submit_smoke.js \
-  -e BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod" \
+  -e BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod" \
   -e API_KEY="your-api-key" \
   -e FORM_ID="contact-us"
 ```
@@ -153,7 +153,7 @@ k6 run loadtest/submit_smoke.js \
 
 3. **Test with valid API key**
    ```bash
-   curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+   curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
      -H "Content-Type: application/json" \
      -H "X-Api-Key: YOUR_API_KEY" \
      -d '{"form_id":"contact-us","name":"Test"}'

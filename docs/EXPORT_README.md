@@ -6,7 +6,7 @@ Download FormBridge submissions as CSV for analysis, reporting, and integration 
 
 ### Via Dashboard
 
-1. Open Analytics Dashboard: https://omdeshpande09012005.github.io/docs/dashboard/
+1. Open Analytics Dashboard: https://YOUR_USERNAME.github.io/docs/dashboard/
 2. Click **"Download CSV"** button
 3. Enter number of days (default 7, max 90)
 4. Choose location to save file
@@ -15,7 +15,7 @@ Download FormBridge submissions as CSV for analysis, reporting, and integration 
 ### Via API (cURL)
 
 ```bash
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/export \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/export \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: your-api-key" \
   -d '{"form_id":"my-portfolio","days":7}' \

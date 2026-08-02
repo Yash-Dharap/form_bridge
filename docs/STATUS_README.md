@@ -12,7 +12,7 @@ The Status Page provides:
 - **Automatic Updates**: GitHub Actions workflow pings API every 15 minutes
 - **Zero Downtime**: Fully static site hosted on GitHub Pages
 
-**Status Page URL**: `https://omdeshpande09012005.github.io/formbridge/docs/status/`
+**Status Page URL**: `https://YOUR_USERNAME.github.io/formbridge/docs/status/`
 
 ---
 
@@ -50,7 +50,7 @@ aws lambda get-function-configuration --function-name contactFormProcessor --que
 
 ### 3. Check Status Page
 
-Navigate to: `https://omdeshpande09012005.github.io/formbridge/docs/status/`
+Navigate to: `https://YOUR_USERNAME.github.io/formbridge/docs/status/`
 
 Expected output:
 ```
@@ -118,7 +118,7 @@ At 15-minute intervals, this retains **50 hours** of history.
 ```json
 {
   "updated_at": "2025-11-05T12:34:56Z",
-  "endpoint": "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/analytics",
+  "endpoint": "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/analytics",
   "region": "ap-south-1",
   "status": "UP|DEGRADED|DOWN",
   "http_code": 200,
@@ -166,7 +166,7 @@ cat docs/status/status.json | jq '.'
 
 # 2. Test endpoint manually
 curl -X POST \
-  "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
+  "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
   -H "X-Api-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{"action":"analytics","test":true}'
@@ -184,7 +184,7 @@ curl -X POST \
 **Fix**:
 ```bash
 # Check actual latency
-time curl -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
+time curl -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
   -H "X-Api-Key: YOUR_KEY" \
   -d '{"action":"analytics","test":true}'
 
@@ -260,7 +260,7 @@ API_KEY=$(aws ssm get-parameter --name /formbridge/prod/api-key --with-decryptio
 
 # 2. Run health check
 curl -v -X POST \
-  "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
+  "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/analytics" \
   -H "X-Api-Key: $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"action":"analytics","test":true}'
@@ -323,7 +323,7 @@ on:
 
 ## 🔗 Related Links
 
-- [FormBridge API Docs](https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/swagger/)
+- [FormBridge API Docs](https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/swagger/)
 - [Analytics Dashboard](../dashboard/)
 - [Main README](../../README_PRODUCTION.md)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)

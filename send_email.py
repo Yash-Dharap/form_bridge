@@ -12,10 +12,10 @@ from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 
 # Configuration
-SENDER_EMAIL = "omdeshpande123456789@gmail.com"
+SENDER_EMAIL = "you@example.com"
 # Note: In AWS SES sandbox mode, both sender and recipient must be verified
 # Using verified sender as recipient for testing
-RECIPIENT_EMAIL = "omdeshpande123456789@gmail.com"  # Change this to om.deshpande@mitwpu.edu.in once verified in SES
+RECIPIENT_EMAIL = "you@example.com"  # Change this to you@example.com once verified in SES
 TEMPLATE_PATH = Path(__file__).parent / "email_templates" / "base.html"
 
 # AWS Configuration

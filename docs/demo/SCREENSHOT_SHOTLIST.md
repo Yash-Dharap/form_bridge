@@ -34,7 +34,7 @@ Example: `01_dashboard_kpis_overview.png`, `02_api_postman_success_200.png`
 |---|------|--------|-------------|-------|
 | **05** | Postman Success (200 OK) | Open Postman, select "Submit" request, send with API key | Response shows 200 OK, JSON body with submission ID | Show Headers + Body tabs, highlight status code |
 | **06** | Postman Failure (403 No Key) | Same request, but remove X-Api-Key header, send | Response shows 403 Forbidden, error message | Show status clearly, demonstrate security |
-| **07** | OpenAPI/Swagger UI | Navigate to https://omdeshpande09012005.github.io/swagger/ | Full page showing endpoints: /submit, /analytics, /export | Light/dark theme consistent, endpoints expanded |
+| **07** | OpenAPI/Swagger UI | Navigate to https://YOUR_USERNAME.github.io/swagger/ | Full page showing endpoints: /submit, /analytics, /export | Light/dark theme consistent, endpoints expanded |
 | **08** | Postman Environment Variables | Open "Manage Environments" → "FormBridge.Prod" | Show variables: base_url, api_key, form_id, hmac_enabled, hmac_secret | Ensure sensitive values are shown (or masked for security) |
 
 ---

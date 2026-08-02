@@ -9,7 +9,7 @@ From your screenshot, the contact form shows:
 
 With CORS errors in the console:
 ```
-Access to fetch at 'https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit' 
+Access to fetch at 'https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit' 
 from origin 'contact.html' has been blocked by CORS policy
 ```
 
@@ -32,7 +32,7 @@ If you can't redeploy, use this workaround:
 **Use the PowerShell email sender script directly**:
 
 ```powershell
-.\send_email_via_api.ps1 -Sender "omdeshpande123456789@gmail.com" -Recipient "om.deshpande@mitwpu.edu.in"
+.\send_email_via_api.ps1 -Sender "you@example.com" -Recipient "you@example.com"
 ```
 
 This successfully bypasses the frontend and sends emails directly.
@@ -70,7 +70,7 @@ Once redeployed, test from:
 
 ### Frontend (Contact Form)
 ```
-https://omdeshpande09012005.github.io/formbridge/contact.html
+https://YOUR_USERNAME.github.io/formbridge/contact.html
 ```
 
 ### PowerShell (Direct API)
@@ -80,12 +80,12 @@ https://omdeshpande09012005.github.io/formbridge/contact.html
 
 ### CURL Command
 ```bash
-curl -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -d '{
     "form_id": "email-test",
     "name": "Om Deshpande",
-    "email": "omdeshpande123456789@gmail.com",
+    "email": "you@example.com",
     "message": "Test message"
   }'
 ```
@@ -106,9 +106,9 @@ curl -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submi
 ## Current Email Configuration
 
 ```yaml
-SES Sender: omdeshpande123456789@gmail.com (Verified ✅)
-Recipients: om.deshpande@mitwpu.edu.in
-CORS Origin: https://omdeshpande09012005.github.io/formbridge/
+SES Sender: you@example.com (Verified ✅)
+Recipients: you@example.com
+CORS Origin: https://YOUR_USERNAME.github.io/formbridge/
 Region: ap-south-1
 ```
 
@@ -123,7 +123,7 @@ Use this until deployment:
 .\send_email_via_api.ps1
 
 # With custom sender (any verified identity)
-.\send_email_via_api.ps1 -Sender "sahil.bobhate@mitwpu.edu.in" -Recipient "om.deshpande@mitwpu.edu.in"
+.\send_email_via_api.ps1 -Sender "you@example.com" -Recipient "you@example.com"
 ```
 
 ✅ **This works immediately** - no frontend CORS issues!

@@ -1,6 +1,6 @@
 {
   "updated_at": "2026-04-23T09:11:26Z",
-  "endpoint": "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/analytics",
+  "endpoint": "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/analytics",
   "region": "ap-south-1",
   "status": "DOWN",
   "http_code": 0,

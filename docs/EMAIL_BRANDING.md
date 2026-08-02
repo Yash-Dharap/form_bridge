@@ -68,12 +68,12 @@ FormBridge sends branded HTML emails for contact form submissions with:
 
 3. **For FormBridge:**
    ```
-   https://omdeshpande09012005.github.io/website/assets/logo.svg
+   https://YOUR_USERNAME.github.io/website/assets/logo.svg
    ```
 
 4. **Verify it's public:**
    ```bash
-   curl -I https://omdeshpande09012005.github.io/website/assets/logo.svg
+   curl -I https://YOUR_USERNAME.github.io/website/assets/logo.svg
    # Should return: HTTP/1.1 200 OK
    ```
 
@@ -266,9 +266,9 @@ Set these in AWS Lambda console or `samconfig.toml`:
 ```toml
 [default.build.parameters]
 BRAND_NAME = "FormBridge"
-BRAND_LOGO_URL = "https://omdeshpande09012005.github.io/website/assets/logo.svg"
+BRAND_LOGO_URL = "https://YOUR_USERNAME.github.io/website/assets/logo.svg"
 BRAND_PRIMARY_HEX = "#6D28D9"
-DASHBOARD_URL = "https://omdeshpande09012005.github.io/docs/"
+DASHBOARD_URL = "https://YOUR_USERNAME.github.io/docs/"
 ```
 
 ---
@@ -473,7 +473,7 @@ Our template meets WCAG AA standards:
 **Solutions:**
 1. **Verify URL is HTTPS:**
    ```bash
-   curl -I https://omdeshpande09012005.github.io/website/assets/logo.svg
+   curl -I https://YOUR_USERNAME.github.io/website/assets/logo.svg
    ```
 
 2. **Check image is public (no auth required):**
@@ -717,9 +717,9 @@ FormBridge email templates are provided as-is for use in your FormBridge deploym
 
 ```bash
 BRAND_NAME="FormBridge"
-BRAND_LOGO_URL="https://omdeshpande09012005.github.io/website/assets/logo.svg"
+BRAND_LOGO_URL="https://YOUR_USERNAME.github.io/website/assets/logo.svg"
 BRAND_PRIMARY_HEX="#6D28D9"
-DASHBOARD_URL="https://omdeshpande09012005.github.io/docs/"
+DASHBOARD_URL="https://YOUR_USERNAME.github.io/docs/"
 ```
 
 ### Preview Tool Usage

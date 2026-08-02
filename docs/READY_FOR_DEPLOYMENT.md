@@ -146,7 +146,7 @@ git push origin main
 
 # 3. Wait 1-2 minutes for GitHub Pages to build
 
-# 4. Visit: https://omdeshpande09012005.github.io/formbridge/website-v2/
+# 4. Visit: https://YOUR_USERNAME.github.io/formbridge/website-v2/
 ```
 
 ---
@@ -278,7 +278,7 @@ node server.js
 
 ### Remote Testing (After Deploy)
 ```
-# Visit: https://omdeshpande09012005.github.io/formbridge/website-v2/
+# Visit: https://YOUR_USERNAME.github.io/formbridge/website-v2/
 
 # Test checklist:
 # - [ ] Home page loads

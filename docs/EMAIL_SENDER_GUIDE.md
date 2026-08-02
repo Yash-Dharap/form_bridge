@@ -12,11 +12,11 @@ Your FormBridge service is fully configured with AWS SES and can send emails usi
 
 ```powershell
 # Set your variables
-$ApiUrl = "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit"
+$ApiUrl = "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit"
 $Payload = @{
     form_id = "email-template-test"
     name = "Om Deshpande"
-    email = "om.deshpande@mitwpu.edu.in"
+    email = "you@example.com"
     message = "Testing FormBridge email template"
 } | ConvertTo-Json
 
@@ -42,12 +42,12 @@ send_email.bat
 ### Option 4: CURL Command (if curl is installed)
 
 ```bash
-curl -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -d '{
     "form_id": "email-template-test",
     "name": "Om Deshpande",
-    "email": "om.deshpande@mitwpu.edu.in",
+    "email": "you@example.com",
     "message": "Testing FormBridge email template"
   }'
 ```
@@ -62,7 +62,7 @@ curl -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submi
 4. **Database**: Submission stored in DynamoDB for analytics
 
 ### API Endpoint
-- **URL**: `https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit`
+- **URL**: `https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit`
 - **Method**: POST
 - **Content-Type**: application/json
 
@@ -124,9 +124,9 @@ Your system automatically uses `email_templates/base.html` which includes:
 ## Configuration
 
 ### Current Settings
-- **API Endpoint**: https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod
+- **API Endpoint**: https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod
 - **Region**: ap-south-1
-- **SES Sender**: omdeshpande123456789@gmail.com (⚠️ MUST be verified)
+- **SES Sender**: you@example.com (⚠️ MUST be verified)
 - **Database**: DynamoDB (contact-form-submissions-prod)
 - **Template**: email_templates/base.html
 
@@ -146,7 +146,7 @@ The FormBridge contact form on your website automatically sends emails:
 ```javascript
 // From your contact.html form
 const response = await fetch(
-  'https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit',
+  'https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit',
   {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

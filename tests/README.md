@@ -81,7 +81,7 @@ MAILHOG_URL=http://localhost:8025
 
 **Example `.env.prod`:**
 ```env
-BASE_URL=https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod
+BASE_URL=https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod
 API_KEY=your-actual-api-key-here
 FORM_ID=my-portfolio
 HMAC_ENABLED=true
@@ -411,7 +411,7 @@ WEBHOOK_QUEUE_URL="https://sqs.ap-south-1.amazonaws.com/..."
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| BASE_URL | Yes | https://12mse3zde5.execute... | Production API endpoint |
+| BASE_URL | Yes | https://YOUR_API_ID.execute... | Production API endpoint |
 | API_KEY | **YES** | REPLACE_ME | Production API key |
 | FORM_ID | Yes | my-portfolio | Primary form to test |
 | FORM_IDS_ROUTED | No | - | Routed form IDs (comma-sep) |

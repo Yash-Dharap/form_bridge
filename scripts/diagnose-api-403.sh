@@ -20,7 +20,7 @@ NC='\033[0m' # No Color
 ################################################################################
 
 REGION="${REGION:-ap-south-1}"
-API_ID="${API_ID:-12mse3zde5}"
+API_ID="${API_ID:-YOUR_API_ID}"
 STAGE_NAME="${STAGE_NAME:-Prod}"
 API_KEY_ID="${API_KEY_ID:-}"  # Optional, will auto-detect if empty
 USAGE_PLAN_NAME="${USAGE_PLAN_NAME:-}"  # Optional, will auto-detect if empty

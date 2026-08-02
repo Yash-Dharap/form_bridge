@@ -23,7 +23,7 @@ sqs = boto3.client("sqs")
 DDB_TABLE = os.environ.get("DDB_TABLE")
 FORM_CONFIG_TABLE = os.environ.get("FORM_CONFIG_TABLE", "formbridge-config")
 SES_SENDER = os.environ.get("SES_SENDER")  # verified sender email
-FRONTEND_ORIGIN = os.environ.get("FRONTEND_ORIGIN", "https://omdeshpande09012005.github.io/formbridge/")
+FRONTEND_ORIGIN = os.environ.get("FRONTEND_ORIGIN", "https://YOUR_USERNAME.github.io/formbridge/")
 WEBHOOK_QUEUE_URL = os.environ.get("WEBHOOK_QUEUE_URL", "")  # optional SQS queue for webhooks
 STAGE = os.environ.get("STAGE", "prod")  # Environment stage for SSM/Secrets paths
 HMAC_VERSION = int(os.environ.get("HMAC_VERSION", "1"))  # For cache invalidation
@@ -57,7 +57,7 @@ def load_config():
         f"/formbridge/{STAGE}/brand/logo_url",
         decrypt=False,
         fallback_env="BRAND_LOGO_URL"
-    ) or os.environ.get("BRAND_LOGO_URL", "https://omdeshpande09012005.github.io/formbridge/assets/logo.svg")
+    ) or os.environ.get("BRAND_LOGO_URL", "https://YOUR_USERNAME.github.io/formbridge/assets/logo.svg")
     
     brand_primary_hex = get_param(
         f"/formbridge/{STAGE}/brand/primary_hex",
@@ -69,7 +69,7 @@ def load_config():
         f"/formbridge/{STAGE}/dashboard/url",
         decrypt=False,
         fallback_env="DASHBOARD_URL"
-    ) or os.environ.get("DASHBOARD_URL", "https://omdeshpande09012005.github.io/formbridge/")
+    ) or os.environ.get("DASHBOARD_URL", "https://YOUR_USERNAME.github.io/formbridge/")
     
     # Load HMAC secret from Secrets Manager or env var
     hmac_secret = get_secret(
@@ -332,7 +332,7 @@ def get_form_config(form_id):
         "recipients": global_config.get("recipients", []),
         "subject_prefix": "",
         "brand_primary_hex": global_config.get("brand_primary_hex", "#6D28D9"),
-        "dashboard_url": global_config.get("dashboard_url", "https://omdeshpande09012005.github.io/formbridge/"),
+        "dashboard_url": global_config.get("dashboard_url", "https://YOUR_USERNAME.github.io/formbridge/"),
         "webhooks": [],
     }
     
@@ -922,9 +922,9 @@ def handle_submit(event, context):
     configured_recipients = form_config.get("recipients", global_config.get("recipients", []))
     subject_prefix = form_config.get("subject_prefix", "")
     configured_brand_hex = form_config.get("brand_primary_hex", global_config.get("brand_primary_hex", "#6D28D9"))
-    configured_dashboard_url = form_config.get("dashboard_url", global_config.get("dashboard_url", "https://omdeshpande09012005.github.io/formbridge/"))
+    configured_dashboard_url = form_config.get("dashboard_url", global_config.get("dashboard_url", "https://YOUR_USERNAME.github.io/formbridge/"))
     brand_name = global_config.get("brand_name", "FormBridge")
-    brand_logo_url = global_config.get("brand_logo_url", "https://omdeshpande09012005.github.io/formbridge/assets/logo.svg")
+    brand_logo_url = global_config.get("brand_logo_url", "https://YOUR_USERNAME.github.io/formbridge/assets/logo.svg")
     
     # Build plain-text email (fallback for all clients)
     subject_prefix_str = f"{subject_prefix} " if subject_prefix else ""

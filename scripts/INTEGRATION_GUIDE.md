@@ -71,7 +71,7 @@ aws sts get-caller-identity
 
 # 5. Correct API ID and stage
 aws apigateway get-stage \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --region ap-south-1
 ```
@@ -118,12 +118,12 @@ bash scripts/diagnose-api-403.sh --fix-permissive
 ```bash
 # Run curl commands from script output
 # Test WITHOUT key (should be 403):
-curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -i -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -d '{"form_id":"test","message":"hello"}'
 
 # Test WITH key (should be 200):
-curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+curl -i -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: YOUR_KEY_HERE" \
   -d '{"form_id":"test","message":"hello"}'
@@ -133,7 +133,7 @@ curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/su
 
 ```bash
 # Set up k6 environment
-export BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod"
+export BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod"
 export API_KEY="<FROM_DIAGNOSTIC_OUTPUT>"
 export FORM_ID="my-portfolio"
 
@@ -231,20 +231,20 @@ bash -x scripts/diagnose-api-403.sh
 
 4. **Test again**:
    ```bash
-   curl -i -X POST "https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
+   curl -i -X POST "https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit" \
      -H "X-Api-Key: YOUR_KEY"
    ```
 
 5. **Check CloudWatch** if still failing:
    ```bash
-   aws logs tail /aws/apigateway/12mse3zde5/Prod --follow
+   aws logs tail /aws/apigateway/YOUR_API_ID/Prod --follow
    ```
 
 ### Issue: "Stage not found"
 
 ```bash
 # List available stages
-aws apigateway get-stages --rest-api-id 12mse3zde5 --region ap-south-1
+aws apigateway get-stages --rest-api-id YOUR_API_ID --region ap-south-1
 
 # Update script with correct stage name
 export STAGE_NAME=YourStageName
@@ -269,11 +269,11 @@ If automatic fixes don't work, apply manually:
 
 ```bash
 RESOURCE_ID=$(aws apigateway get-resources \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --region ap-south-1 | jq -r '.items[] | select(.path == "/submit") | .id')
 
 aws apigateway put-method \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --resource-id $RESOURCE_ID \
   --http-method POST \
   --authorization-type NONE \
@@ -285,14 +285,14 @@ aws apigateway put-method \
 
 ```bash
 aws apigateway put-resource-policy \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --policy '{
     "Version": "2012-10-17",
     "Statement": [{
       "Effect": "Allow",
       "Principal": "*",
       "Action": "execute-api:Invoke",
-      "Resource": "arn:aws:execute-api:ap-south-1:*:12mse3zde5/*"
+      "Resource": "arn:aws:execute-api:ap-south-1:*:YOUR_API_ID/*"
     }]
   }' \
   --region ap-south-1
@@ -302,7 +302,7 @@ aws apigateway put-resource-policy \
 
 ```bash
 aws apigateway update-stage \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --patch-operations \
     op=replace,path=/*/*/logging/loglevel,value=INFO \
@@ -314,7 +314,7 @@ aws apigateway update-stage \
 
 ```bash
 aws apigateway create-deployment \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --region ap-south-1
 ```
@@ -325,11 +325,11 @@ aws apigateway create-deployment \
 
 ```bash
 # Real-time tail
-aws logs tail /aws/apigateway/12mse3zde5/Prod --follow --region ap-south-1
+aws logs tail /aws/apigateway/YOUR_API_ID/Prod --follow --region ap-south-1
 
 # Search for errors
 aws logs start-query \
-  --log-group-name /aws/apigateway/12mse3zde5/Prod \
+  --log-group-name /aws/apigateway/YOUR_API_ID/Prod \
   --start-time $(($(date +%s) - 3600)) \
   --query-string 'fields @timestamp, @message | filter @message like /403|Forbidden/ | limit 50' \
   --region ap-south-1
@@ -395,7 +395,7 @@ fields @timestamp, @message, authorizer, principalId
     "Effect": "Allow",
     "Principal": "*",
     "Action": "execute-api:Invoke",
-    "Resource": "arn:aws:execute-api:ap-south-1:*:12mse3zde5/Prod/POST/submit",
+    "Resource": "arn:aws:execute-api:ap-south-1:*:YOUR_API_ID/Prod/POST/submit",
     "Condition": {
       "IpAddress": {
         "aws:SourceIp": [
@@ -419,13 +419,13 @@ fields @timestamp, @message, authorizer, principalId
 ```bash
 # Export current stage config
 aws apigateway get-stage \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --region ap-south-1 > stage-backup.json
 
 # Export resource policy
 aws apigateway get-resource-policy \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --region ap-south-1 > policy-backup.json
 ```
 

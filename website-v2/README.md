@@ -37,7 +37,7 @@ Edit `js/config.js` with your settings:
 
 ```javascript
 const CONFIG = {
-  API_URL: 'https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod',
+  API_URL: 'https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod',
   API_KEY: 'your-demo-api-key',
   FORM_ID: 'contact-us',
   HMAC_ENABLED: false,
@@ -60,7 +60,7 @@ Open http://localhost:8080 in your browser.
 1. Push to GitHub (branch: `main`)
 2. Enable GitHub Pages in repo settings
 3. Set source to `main` branch, folder `/docs/`
-4. Site will be live at: `https://omdeshpande09012005.github.io/formbridge/`
+4. Site will be live at: `https://YOUR_USERNAME.github.io/formbridge/`
 
 ## File Structure
 

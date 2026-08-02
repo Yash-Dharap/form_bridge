@@ -213,7 +213,7 @@ node server.js
 git add .
 git commit -m "feat(website-v2): complete SaaS marketing site"
 git push origin main
-# Live at: https://omdeshpande09012005.github.io/formbridge/website-v2/
+# Live at: https://YOUR_USERNAME.github.io/formbridge/website-v2/
 ```
 
 ---
@@ -378,7 +378,7 @@ Total: 17 files | 3,500+ lines of code
    ```
 
 6. **Verify live**:
-   https://omdeshpande09012005.github.io/formbridge/website-v2/
+   https://YOUR_USERNAME.github.io/formbridge/website-v2/
 
 ---
 

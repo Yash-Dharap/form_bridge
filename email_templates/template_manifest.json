@@ -42,9 +42,9 @@
   
   "default_values": {
     "brand_name": "FormBridge",
-    "brand_logo_url": "https://omdeshpande09012005.github.io/website/assets/logo.svg",
+    "brand_logo_url": "https://YOUR_USERNAME.github.io/website/assets/logo.svg",
     "brand_primary_hex": "#6D28D9",
-    "dashboard_url": "https://omdeshpande09012005.github.io/docs/"
+    "dashboard_url": "https://YOUR_USERNAME.github.io/docs/"
   },
   
   "email_format": {
@@ -93,9 +93,9 @@
         "ts": "2025-11-05T14:30:00Z",
         "ip": "192.0.2.1",
         "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "dashboard_url": "https://omdeshpande09012005.github.io/docs/",
+        "dashboard_url": "https://YOUR_USERNAME.github.io/docs/",
         "brand_name": "FormBridge",
-        "brand_logo_url": "https://omdeshpande09012005.github.io/website/assets/logo.svg",
+        "brand_logo_url": "https://YOUR_USERNAME.github.io/website/assets/logo.svg",
         "brand_primary_hex": "#6D28D9"
       }
     },

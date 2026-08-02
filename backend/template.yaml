@@ -41,7 +41,7 @@ Parameters:
   FrontendOrigin:
     Type: String
     Description: "Allowed frontend origin for CORS"
-    Default: "https://omdeshpande09012005.github.io/formbridge/"
+    Default: "https://YOUR_USERNAME.github.io/formbridge/"
   SesProvider:
     Type: String
     Description: "Email provider: 'ses' for AWS SES or 'mailhog' for local development"

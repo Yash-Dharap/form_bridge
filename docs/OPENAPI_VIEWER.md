@@ -16,7 +16,7 @@ Swagger UI is an interactive API documentation tool that:
 Visit [editor.swagger.io](https://editor.swagger.io/) and:
 
 1. Click **File** → **Import URL**
-2. If the spec is hosted, paste: `https://omdeshpande09012005.github.io/openapi.yaml`
+2. If the spec is hosted, paste: `https://YOUR_USERNAME.github.io/openapi.yaml`
 3. Or manually paste the contents of `api/openapi.yaml`
 
 **Pros:** No installation, works in browser
@@ -137,7 +137,7 @@ git commit -m "docs: add Swagger UI to GitHub Pages"
 git push origin main
 ```
 
-Access at: `https://omdeshpande09012005.github.io/swagger.html`
+Access at: `https://YOUR_USERNAME.github.io/swagger.html`
 
 ---
 
@@ -188,7 +188,7 @@ To include authentication in Swagger requests:
 Swagger UI has a **Servers** dropdown to switch between environments:
 
 - **Local Development:** `http://127.0.0.1:3000`
-- **Production:** `https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod`
+- **Production:** `https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod`
 
 Select the server before testing!
 

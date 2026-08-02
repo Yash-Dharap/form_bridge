@@ -49,7 +49,7 @@
   - Variables: base_url, api_key, form_id, hmac_enabled, hmac_secret
 
 - [ ] **Swagger UI Live**: Documentation viewable
-  - Swagger accessible at: https://omdeshpande09012005.github.io/swagger/ (or `docs/swagger.html`)
+  - Swagger accessible at: https://YOUR_USERNAME.github.io/swagger/ (or `docs/swagger.html`)
   - "Try it out" buttons functional
   - Endpoint descriptions clear
 
@@ -95,7 +95,7 @@
 
 - [ ] **CORS Configured**: 
   - Test with OPTIONS request: `curl -i -X OPTIONS https://...`
-  - Response includes: `Access-Control-Allow-Origin: https://omdeshpande09012005.github.io`
+  - Response includes: `Access-Control-Allow-Origin: https://YOUR_USERNAME.github.io`
 
 - [ ] **IAM Role (Lambda)**: Least-privilege permissions
   - `lambda-execution-role` exists

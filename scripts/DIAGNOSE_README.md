@@ -24,7 +24,7 @@ powershell -ExecutionPolicy Bypass -File scripts\diagnose-api-403.ps1
 # With specific parameters
 powershell -ExecutionPolicy Bypass -File scripts\diagnose-api-403.ps1 `
   -Region ap-south-1 `
-  -ApiId 12mse3zde5 `
+  -ApiId YOUR_API_ID `
   -StageName Prod
 ```
 
@@ -35,7 +35,7 @@ Set these before running the scripts:
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `REGION` | `ap-south-1` | AWS region |
-| `API_ID` | `12mse3zde5` | API Gateway REST API ID |
+| `API_ID` | `YOUR_API_ID` | API Gateway REST API ID |
 | `STAGE_NAME` | `Prod` | Deployment stage name |
 | `API_KEY_ID` | `` | (optional) API key ID; auto-detected if empty |
 | `USAGE_PLAN_NAME` | `` | (optional) Usage plan name; auto-detected if empty |
@@ -43,7 +43,7 @@ Set these before running the scripts:
 **Bash:**
 ```bash
 export REGION=ap-south-1
-export API_ID=12mse3zde5
+export API_ID=YOUR_API_ID
 export STAGE_NAME=Prod
 bash scripts/diagnose-api-403.sh
 ```
@@ -51,7 +51,7 @@ bash scripts/diagnose-api-403.sh
 **PowerShell:**
 ```powershell
 $env:REGION = "ap-south-1"
-$env:API_ID = "12mse3zde5"
+$env:API_ID = "YOUR_API_ID"
 powershell scripts/diagnose-api-403.ps1
 ```
 
@@ -112,20 +112,20 @@ PRECHECKS
 ✓ jq installed
 ✓ curl installed
 ✓ AWS credentials valid
-✓ Configuration valid: API_ID=12mse3zde5, STAGE_NAME=Prod, REGION=ap-south-1
+✓ Configuration valid: API_ID=YOUR_API_ID, STAGE_NAME=Prod, REGION=ap-south-1
 
 ═══════════════════════════════════════════════════════════════
 STEP 1: STAGE INFORMATION
 ═══════════════════════════════════════════════════════════════
-ℹ Stage ARN: arn:aws:apigateway:ap-south-1::/restapis/12mse3zde5/stages/Prod
-ℹ Endpoint: https://12mse3zde5.execute-api.ap-south-1.amazonaws.com
+ℹ Stage ARN: arn:aws:apigateway:ap-south-1::/restapis/YOUR_API_ID/stages/Prod
+ℹ Endpoint: https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com
 ⚠ Execution logging is OFF (will need to enable for CloudWatch diagnostics)
 
 ═══════════════════════════════════════════════════════════════
 STEP 2: USAGE PLANS & API KEY BINDING
 ═══════════════════════════════════════════════════════════════
 ℹ Found 1 usage plan(s)
-✓ Found usage plan: formbridge-plan (abc123def456) containing API 12mse3zde5
+✓ Found usage plan: formbridge-plan (abc123def456) containing API YOUR_API_ID
 ✓ Stage Prod is associated with this plan
 ℹ Fetching API keys from plan formbridge-plan...
 ℹ Found 1 API key(s) in usage plan
@@ -137,10 +137,10 @@ STEP 2: USAGE PLANS & API KEY BINDING
 ### 1. **Missing X-Api-Key Header**
 ```bash
 # WRONG - No API key
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit
 
 # RIGHT - With API key
-curl -X POST https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod/submit \
+curl -X POST https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod/submit \
   -H "X-Api-Key: YOUR_API_KEY_VALUE"
 ```
 
@@ -173,7 +173,7 @@ Run with `--fix-permissive` flag to apply:
 Run with `--fix-permissive` to enable it:
 ```bash
 aws apigateway put-method \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --resource-id <SUBMIT_RESOURCE_ID> \
   --http-method POST \
   --authorization-type NONE \
@@ -185,7 +185,7 @@ aws apigateway put-method \
 The script auto-deploys if changes are made. Manual deploy:
 ```bash
 aws apigateway create-deployment \
-  --rest-api-id 12mse3zde5 \
+  --rest-api-id YOUR_API_ID \
   --stage-name Prod \
   --region ap-south-1
 ```
@@ -196,7 +196,7 @@ Once diagnostics pass and you have your API key:
 
 ```bash
 # Set environment
-export BASE_URL="https://12mse3zde5.execute-api.ap-south-1.amazonaws.com/Prod"
+export BASE_URL="https://YOUR_API_ID.execute-api.ap-south-1.amazonaws.com/Prod"
 export API_KEY="<YOUR_API_KEY_VALUE>"
 export FORM_ID="my-portfolio"
 export HMAC_ENABLED="false"
@@ -232,7 +232,7 @@ k6 run loadtest/submit_smoke.js
 Check `API_ID` and `STAGE_NAME` are correct:
 ```bash
 aws apigateway get-rest-apis --region ap-south-1 | jq '.items[].name'
-aws apigateway get-stages --rest-api-id 12mse3zde5 --region ap-south-1
+aws apigateway get-stages --rest-api-id YOUR_API_ID --region ap-south-1
 ```
 
 ### "AWS credentials not configured"
